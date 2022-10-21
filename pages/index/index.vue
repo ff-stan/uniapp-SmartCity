@@ -2,7 +2,7 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area">
-			<text class="title">{{title}}</text>
+			<navigator url="../login/login">登录</navigator>
 		</view>
 	</view>
 </template>
@@ -12,7 +12,7 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				
 			}
 		},
 		onLoad() {
@@ -21,7 +21,7 @@
 			}).then((res) => console.log(res))
 		},
 		methods: {
-
+			
 		}
 	}
 </script>

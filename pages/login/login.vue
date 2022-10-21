@@ -19,7 +19,11 @@
 				password:""
 			}
 		},
+		created() {
+			
+		},
 		methods: {
+			// 登录 请求登录api
 			login() {
 				uni.request({
 					url:"http://124.93.196.45:10001/prod-api/api/login",
@@ -38,7 +42,6 @@
 							uni.setStorageSync("token",res.data.token)
 							console.log(res)
 						}
-						console.log(res)
 					}
 				})
 			}

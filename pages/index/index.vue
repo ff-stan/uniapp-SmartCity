@@ -15,6 +15,15 @@
 				
 			}
 		},
+		created() {
+			// 检测是否登录
+			uni.getStorage({
+				key:"token",
+				fail() {
+					uni.navigateTo({url:"/pages/login/login"})
+				}
+			})
+		},
 		onLoad() {
 			http.http({
 				url:"/prod-api/api/common/user/getInfo",

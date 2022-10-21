@@ -29,7 +29,7 @@
 			}
 		},
 		methods: {
-			// 注册 请求注册api 
+			// 注册 请求注册api   
 			register() {
 				uni.request({
 					url:"http://124.93.196.45:10001/prod-api/api/register",

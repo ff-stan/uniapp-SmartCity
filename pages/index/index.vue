@@ -39,7 +39,7 @@
 			</view>
 		</view>
 		<!-- 新闻列表 -->
-		<h2 class="new-list-title">新闻列表</h2>
+		<h2 class="new-list-title">新闻列表</h2> 
 		<view class="new-list">
 			<scroll-view scroll-x="true" v-for="item in news">
 				<text>{{item.name}}</text>

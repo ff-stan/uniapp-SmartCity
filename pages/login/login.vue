@@ -20,7 +20,15 @@
 			}
 		},
 		created() {
-			
+			// 检测是否登录 后续剪切到个人详情页
+			uni.getStorage({
+				key: "token",
+				fail() {
+					uni.navigateTo({
+						url: "/pages/login/login"
+					})
+				}
+			})
 		},
 		methods: {
 			// 登录 请求登录api

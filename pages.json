@@ -3,14 +3,14 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "主页"
 			}
 		}
 	    ,{
             "path" : "pages/login/login",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "登录",
                 "enablePullDownRefresh": false
             }
             
@@ -19,7 +19,7 @@
             "path" : "pages/register/register",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "注册",
                 "enablePullDownRefresh": false
             }
             
@@ -41,5 +41,37 @@
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#aa0000",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "./static/tabbar/首页.png",
+			"selectedIconPath": "./static/tabbar/首页_sel.png",
+			"text": "主页"
+		}, {
+			"pagePath": "pages/index/index",
+			"iconPath": "./static/tabbar/分类.png",
+			"selectedIconPath": "./static/tabbar/分类_sel.png",
+			"text": "全部服务"
+		},{
+			"pagePath": "pages/index/index",
+			"iconPath": "./static/tabbar/资讯.png",
+			"selectedIconPath": "./static/tabbar/资讯_sel.png",
+			"text":"新闻"
+		},{
+			"pagePath": "pages/index/index",
+			"iconPath": "./static/tabbar/活动.png",
+			"selectedIconPath": "./static/tabbar/活动_sel.png",
+			"text": "活动"
+		},{
+			"pagePath": "pages/login/login",
+			"iconPath": "./static/tabbar/我的.png",
+			"selectedIconPath": "./static/tabbar/我的_sel.png",
+			"text": "个人中心"
+		}]
 	}
 }

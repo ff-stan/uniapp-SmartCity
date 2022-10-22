@@ -41,8 +41,24 @@
 		<!-- 新闻列表 -->
 		<h2 class="new-list-title">新闻列表</h2> 
 		<view class="new-list">
-			<scroll-view scroll-x="true" v-for="item in news">
-				<text>{{item.name}}</text>
+			<!-- 第一次循环 新闻类型 -->
+			<scroll-view scroll-y="true" v-for="item in news" class="scrollView">
+				<text class="new-title">{{item.name}}</text>
+				<!-- 第二次循环  由新闻类型获取到的新闻文章数组-->
+					<!-- 第三次循环 新闻数组数据 -->
+					<!-- 后续做一下分离数据 目前循环的同一个数组导致数据渲染出来是一样的 -->
+					<view v-for="n in getRows(newsList)" class="new-item">
+						<view class="new-item-img">
+							<img :src="getImg(n.cover)">
+						</view>
+						<view class="new-item-text">
+							{{n.title}}
+							<p>评论数:{{n.commentNum}}</p>
+							<p>点赞数:{{n.likeNum}}</p>
+							<p>阅读数:{{n.readNum}}</p>
+							<p>发布时间:{{n.publishDate}}</p>
+						</view>
+					</view>
 			</scroll-view>
 		</view>
 	</view>
@@ -96,7 +112,9 @@
 						itemSrc: "./static/组织管理.png"
 					}
 				],
-				news: []
+				news: [],
+				newsList: [],
+				rowNum:-1
 			}
 		},
 		created() {
@@ -110,12 +128,22 @@
 					x.advImg = "http://124.93.196.45:10001" + x.advImg
 				})
 			})
-
 			// 获取新闻类型
 			http.http({
 				url: "/prod-api/press/category/list"
 			}).then(function(res) {
 				that.news = res.data.data
+				// 获取新闻列表
+				that.news.forEach((x) => {
+					http.http({
+						url: "/prod-api/press/press/list",
+						data: {
+							type:x.id
+						}
+					}).then(function (res) {
+						that.newsList.push(res.data.rows)
+					})
+				})
 			})
 		},
 		methods: {
@@ -127,6 +155,12 @@
 			},
 			goActivity: function(e) {
 				console.log(e)
+			},
+			getImg: function(img) {
+				return "http://124.93.196.45:10001" + img
+			},
+			getRows: function(Rows){
+				// console.log(Rows)
 			}
 		}
 	}
@@ -220,10 +254,37 @@
 	.new-list-title {
 		text-align: center;
 	}
-
-	.new-list {
+	
+	.scrollView{
+		width: 80%;
+		height: 300px;
+		margin: 1em auto 0 auto;
+	}
+	
+	.new-title {
+		font-size: 1.3em;
+		text-align: center;
+	}
+	.new-item {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
+		margin-top: 1em;
+	}
+	.new-item-img {
+		width: 50%;
+		overflow: hidden;
+	}
+	.new-item-img > img{
+		width: 100%;
+		height: 100%;
+		object-fit: fill;
+	}
+	.new-item-text {
+		width: 45%;
+	}
+	.new-item-text > p {
+		font-size: .7em;
+		text-align: right;
+		color: #644b4c;
 	}
 </style>

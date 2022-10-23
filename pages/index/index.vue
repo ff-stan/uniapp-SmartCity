@@ -10,7 +10,7 @@
 			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
 				<swiper-item v-for="item in swiperRows">
 					<view class="swiper-item">
-						<image mode="widthFix" :src="item.advImg" @click="goTab"></image>
+						<image mode="widthFix" :src="getImg(item.advImg)" @click="goTab"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -39,27 +39,28 @@
 			</view>
 		</view>
 		<!-- 新闻列表 -->
-		<h2 class="new-list-title">新闻列表</h2> 
+		<h2 class="new-list-title">新闻列表</h2>
 		<view class="new-list">
-			<!-- 第一次循环 新闻类型 -->
-			<scroll-view scroll-y="true" v-for="item in news" class="scrollView">
-				<text class="new-title">{{item.name}}</text>
-				<!-- 第二次循环  由新闻类型获取到的新闻文章数组-->
-					<!-- 第三次循环 新闻数组数据 -->
-					<!-- 后续做一下分离数据 目前循环的同一个数组导致数据渲染出来是一样的 -->
-					<view v-for="n in getRows(newsList)" class="new-item">
-						<view class="new-item-img">
-							<img :src="getImg(n.cover)">
-						</view>
-						<view class="new-item-text">
-							{{n.title}}
-							<p>评论数:{{n.commentNum}}</p>
-							<p>点赞数:{{n.likeNum}}</p>
-							<p>阅读数:{{n.readNum}}</p>
-							<p>发布时间:{{n.publishDate}}</p>
-						</view>
+			<!-- 遍历二维数组 -->
+			<view v-for="item in newsList" class="new-view">
+				<!-- 专题标题 -->
+				<view class="new-title">
+					{{item.name}}
+				</view>
+				<!-- 新闻列表 -->
+				<view class="new-item" v-for="n in item">
+					<view class="new-item-img">
+						<img :src="getImg(n.cover)">
 					</view>
-			</scroll-view>
+					<view class="new-item-text">
+						<h5>{{n.title}}</h5>
+						<p>评论数:{{n.commentNum}}</p>
+						<p>点赞数:{{n.likeNum}}</p>
+						<p>阅读数:{{n.readNum}}</p>
+						<p>发布时间:{{n.publishDate}}</p>
+					</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -114,7 +115,6 @@
 				],
 				news: [],
 				newsList: [],
-				rowNum:-1
 			}
 		},
 		created() {
@@ -124,10 +124,8 @@
 				url: "/prod-api/api/rotation/list?pageNum=1&pageSize=8&type=2",
 			}).then(function(res) {
 				that.swiperRows = res.data.rows
-				that.swiperRows.forEach((x) => {
-					x.advImg = "http://124.93.196.45:10001" + x.advImg
-				})
 			})
+
 			// 获取新闻类型
 			http.http({
 				url: "/prod-api/press/category/list"
@@ -138,31 +136,33 @@
 					http.http({
 						url: "/prod-api/press/press/list",
 						data: {
-							type:x.id
+							type: x.id
 						}
-					}).then(function (res) {
+					}).then(function(res) {
+						res.data.rows.name = x.name
 						that.newsList.push(res.data.rows)
 					})
 				})
 			})
 		},
 		methods: {
+			// 搜索页
 			searchNews: function() {
 				console.log(this.search)
 			},
+			// 跳转轮播图页面
 			goTab: function(e) {
 				console.log(e)
 			},
+			// 跳转对应的服务页面
 			goActivity: function(e) {
 				console.log(e)
 			},
+			// 返回添加服务器地址前缀的图片地址字符串
 			getImg: function(img) {
 				return "http://124.93.196.45:10001" + img
-			},
-			getRows: function(Rows){
-				// console.log(Rows)
 			}
-		}
+		},
 	}
 </script>
 
@@ -254,36 +254,40 @@
 	.new-list-title {
 		text-align: center;
 	}
-	
-	.scrollView{
-		width: 80%;
-		height: 300px;
+
+	.new-view {
+		width: 95%;
 		margin: 1em auto 0 auto;
 	}
-	
+
 	.new-title {
 		font-size: 1.3em;
 		text-align: center;
 	}
+
 	.new-item {
 		display: flex;
 		justify-content: space-between;
 		margin-top: 1em;
 	}
+
 	.new-item-img {
 		width: 50%;
 		overflow: hidden;
 	}
-	.new-item-img > img{
+
+	.new-item-img>img {
 		width: 100%;
 		height: 100%;
 		object-fit: fill;
 	}
+
 	.new-item-text {
 		width: 45%;
 	}
-	.new-item-text > p {
-		font-size: .7em;
+
+	.new-item-text>p {
+		font-size: .5em;
 		text-align: right;
 		color: #644b4c;
 	}

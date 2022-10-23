@@ -399,15 +399,15 @@ var render = function() {
         { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
         _vm._l(_vm._$g(23, "f"), function(item, $12, $22, $32) {
           return _c(
-            "v-uni-scroll-view",
+            "uni-view",
             {
               key: item,
               staticClass: _vm._$g("23-" + $32, "sc"),
-              attrs: { "scroll-y": "true", _i: "23-" + $32 }
+              attrs: { _i: "23-" + $32 }
             },
             [
               _c(
-                "v-uni-text",
+                "uni-view",
                 {
                   staticClass: _vm._$g("24-" + $32, "sc"),
                   attrs: { _i: "24-" + $32 }
@@ -446,26 +446,28 @@ var render = function() {
                         attrs: { _i: "28-" + $32 + "-" + $33 }
                       },
                       [
-                        _vm._v(_vm._$g("28-" + $32 + "-" + $33, "t0-0")),
-                        _c("p", { attrs: { _i: "29-" + $32 + "-" + $33 } }, [
-                          _vm._v(
-                            "评论数:" + _vm._$g("29-" + $32 + "-" + $33, "t0-0")
-                          )
+                        _c("h5", { attrs: { _i: "29-" + $32 + "-" + $33 } }, [
+                          _vm._v(_vm._$g("29-" + $32 + "-" + $33, "t0-0"))
                         ]),
                         _c("p", { attrs: { _i: "30-" + $32 + "-" + $33 } }, [
                           _vm._v(
-                            "点赞数:" + _vm._$g("30-" + $32 + "-" + $33, "t0-0")
+                            "评论数:" + _vm._$g("30-" + $32 + "-" + $33, "t0-0")
                           )
                         ]),
                         _c("p", { attrs: { _i: "31-" + $32 + "-" + $33 } }, [
                           _vm._v(
-                            "阅读数:" + _vm._$g("31-" + $32 + "-" + $33, "t0-0")
+                            "点赞数:" + _vm._$g("31-" + $32 + "-" + $33, "t0-0")
                           )
                         ]),
                         _c("p", { attrs: { _i: "32-" + $32 + "-" + $33 } }, [
                           _vm._v(
+                            "阅读数:" + _vm._$g("32-" + $32 + "-" + $33, "t0-0")
+                          )
+                        ]),
+                        _c("p", { attrs: { _i: "33-" + $32 + "-" + $33 } }, [
+                          _vm._v(
                             "发布时间:" +
-                              _vm._$g("32-" + $32 + "-" + $33, "t0-0")
+                              _vm._$g("33-" + $32 + "-" + $33, "t0-0")
                           )
                         ])
                       ],
@@ -574,7 +576,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX.3.6.4.20220922/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.content[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\t/* background-color: #74b9ff; */\n}\n\n/* 搜索框 */\n.search-top[data-v-2be84a3c] {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: space-between;\n\theight: 35px;\n\tmargin: .5em 2em;\n\tpadding: 0 .5em 0 2em;\n\tbox-sizing: border-box;\n\tborder-radius: 1em;\n\tbackground-color: #0984e3;\n}\n\n/* 轮播图 */\n.swiper[data-v-2be84a3c] {\n\ttext-align: center;\n}\n.swiper-item>uni-image[data-v-2be84a3c] {\n\twidth: 100%;\n}\n\n/* 应用服务入口 */\n.items-box[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\talign-content: space-between;\n\twidth: 100%;\n\theight: 110px;\n\tpadding: .5em 0;\n\tbackground-color: #6c5ce7;\n}\n.items-box>.item[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n\theight: 50px;\n\tflex: 20%;\n\tfont-size: .7em;\n}\n.items-box>.item>img[data-v-2be84a3c] {\n\tflex: 1;\n\twidth: 50%;\n}\n\n/* 热门主题 */\n.hot-topics-title[data-v-2be84a3c] {\n\ttext-align: center;\n}\n.hot-topics[data-v-2be84a3c] {\n\twidth: 80%;\n\theight: 100px;\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 0 auto;\n}\n.hot-topics-item[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-content: center;\n\twidth: 40%;\n\ttext-align: center;\n}\n.hot-topics-icon[data-v-2be84a3c] {\n\tflex: 1;\n\tbackground-color: #6c5ce7;\n\tborder-radius: 30px;\n}\n\n/* 新闻列表 */\n.new-list-title[data-v-2be84a3c] {\n\ttext-align: center;\n}\n.scrollView[data-v-2be84a3c]{\n\twidth: 80%;\n\theight: 300px;\n\tmargin: 1em auto 0 auto;\n}\n.new-title[data-v-2be84a3c] {\n\tfont-size: 1.3em;\n\ttext-align: center;\n}\n.new-item[data-v-2be84a3c] {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin-top: 1em;\n}\n.new-item-img[data-v-2be84a3c] {\n\twidth: 50%;\n\toverflow: hidden;\n}\n.new-item-img > img[data-v-2be84a3c]{\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: fill;\n}\n.new-item-text[data-v-2be84a3c] {\n\twidth: 45%;\n}\n.new-item-text > p[data-v-2be84a3c] {\n\tfont-size: .7em;\n\ttext-align: right;\n\tcolor: #644b4c;\n}\n", ""]);
+exports.push([module.i, "\n.content[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\t/* background-color: #74b9ff; */\n}\n\n/* 搜索框 */\n.search-top[data-v-2be84a3c] {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: space-between;\n\theight: 35px;\n\tmargin: .5em 2em;\n\tpadding: 0 .5em 0 2em;\n\tbox-sizing: border-box;\n\tborder-radius: 1em;\n\tbackground-color: #0984e3;\n}\n\n/* 轮播图 */\n.swiper[data-v-2be84a3c] {\n\ttext-align: center;\n}\n.swiper-item>uni-image[data-v-2be84a3c] {\n\twidth: 100%;\n}\n\n/* 应用服务入口 */\n.items-box[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\talign-content: space-between;\n\twidth: 100%;\n\theight: 110px;\n\tpadding: .5em 0;\n\tbackground-color: #6c5ce7;\n}\n.items-box>.item[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n\theight: 50px;\n\tflex: 20%;\n\tfont-size: .7em;\n}\n.items-box>.item>img[data-v-2be84a3c] {\n\tflex: 1;\n\twidth: 50%;\n}\n\n/* 热门主题 */\n.hot-topics-title[data-v-2be84a3c] {\n\ttext-align: center;\n}\n.hot-topics[data-v-2be84a3c] {\n\twidth: 80%;\n\theight: 100px;\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 0 auto;\n}\n.hot-topics-item[data-v-2be84a3c] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-content: center;\n\twidth: 40%;\n\ttext-align: center;\n}\n.hot-topics-icon[data-v-2be84a3c] {\n\tflex: 1;\n\tbackground-color: #6c5ce7;\n\tborder-radius: 30px;\n}\n\n/* 新闻列表 */\n.new-list-title[data-v-2be84a3c] {\n\ttext-align: center;\n}\n.new-view[data-v-2be84a3c] {\n\twidth: 95%;\n\tmargin: 1em auto 0 auto;\n}\n.new-title[data-v-2be84a3c] {\n\tfont-size: 1.3em;\n\ttext-align: center;\n}\n.new-item[data-v-2be84a3c] {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin-top: 1em;\n}\n.new-item-img[data-v-2be84a3c] {\n\twidth: 50%;\n\toverflow: hidden;\n}\n.new-item-img>img[data-v-2be84a3c] {\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: fill;\n}\n.new-item-text[data-v-2be84a3c] {\n\twidth: 45%;\n}\n.new-item-text>p[data-v-2be84a3c] {\n\tfont-size: .5em;\n\ttext-align: right;\n\tcolor: #644b4c;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

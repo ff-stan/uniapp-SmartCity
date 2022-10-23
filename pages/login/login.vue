@@ -15,39 +15,39 @@
 	export default {
 		data() {
 			return {
-				username:"",
-				password:""
+				username: "",
+				password: ""
 			}
 		},
 		created() {
-			// 检测是否登录 后续剪切到个人详情页
-			uni.getStorage({
-				key: "token",
-				fail() {
-					uni.navigateTo({
-						url: "/pages/login/login"
-					})
-				}
-			})
+
 		},
 		methods: {
 			// 登录 请求登录api
 			login() {
 				uni.request({
-					url:"http://124.93.196.45:10001/prod-api/api/login",
-					data:{"username":this.username,"password":this.password},
-					method:"POST",
+					url: "http://124.93.196.45:10001/prod-api/api/login",
+					data: {
+						"username": this.username,
+						"password": this.password
+					},
+					method: "POST",
 					success: (res) => {
-						if(res.data.code != 200){
+						if (res.data.code != 200) {
 							uni.showToast({
-								icon:"error",
-								title:"登录失败",
+								icon: "error",
+								title: "登录失败",
 								success: () => {
-									setTimeout(() => {uni.hideToast()} , 1000)
+									setTimeout(() => {
+										uni.hideToast()
+									}, 1000)
 								}
 							})
-						}else{
-							uni.setStorageSync("token",res.data.token)
+						} else {
+							uni.setStorageSync("token", res.data.token)
+							uni.switchTab({
+								url: "/pages/index/index"
+							})
 							console.log(res)
 						}
 					}
@@ -57,38 +57,44 @@
 	}
 </script>
 
-<style scoped> 
-.content {
-	width: 100%;
-	height: 300px;
-	position: relative;
-}
-.title {
-	text-align: center;
-	margin-top: 1em;
-}
-.fromBox {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-}
-.fromBox > input,button {
-	flex: 1;
-	height: 50px;
-	margin: 2em 3em 0 3em;
-	padding-left: 2em;
-	background-color: #aaffff;
-	border-radius: 1em;
-}
-.fromBox > button{
-	text-align: center;
-	padding-left: 0;
-}
-.regBut {
-	position: absolute;
-	right: 5em;
-	font-size: .8em;
-	color: cadetblue;
-}
+<style scoped>
+	.content {
+		width: 100%;
+		height: 300px;
+		position: relative;
+	}
+
+	.title {
+		text-align: center;
+		margin-top: 1em;
+	}
+
+	.fromBox {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.fromBox>input,
+	button {
+		flex: 1;
+		height: 50px;
+		margin: 2em 3em 0 3em;
+		padding-left: 2em;
+		background-color: #aaffff;
+		border-radius: 1em;
+	}
+
+	.fromBox>button {
+		text-align: center;
+		padding-left: 0;
+	}
+
+	.regBut {
+		position: absolute;
+		right: 5em;
+		font-size: .8em;
+		color: cadetblue;
+	}
 </style>

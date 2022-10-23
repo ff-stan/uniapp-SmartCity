@@ -115,6 +115,7 @@
 				],
 				news: [],
 				newsList: [],
+				getImg: http.getImg
 			}
 		},
 		created() {
@@ -158,10 +159,6 @@
 			goActivity: function(e) {
 				console.log(e)
 			},
-			// 返回添加服务器地址前缀的图片地址字符串
-			getImg: function(img) {
-				return "http://124.93.196.45:10001" + img
-			}
 		},
 	}
 </script>

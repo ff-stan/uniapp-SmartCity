@@ -3,7 +3,7 @@
 		<!-- 搜索框 -->
 		<view class="search-top">
 			<input type="text" confirm-type="search" v-model="search" placeholder="搜索">
-			<icon type="search" @click="searchNews" class="search-icon"></icon>
+			<icon type="search" @click="searchService" class="search-icon"></icon>
 		</view>
 		<!-- 轮播图 -->
 		<view class="swiper-view">
@@ -18,13 +18,17 @@
 		<!-- 应用服务入口 -->
 		<view class="items-box" v-if="items.length > 1">
 			<view class="item" @click="goActivity" :data-tab="items[0].link">
-				<img :src="getImg(items[0].imgUrl)"></image>
+				<img :src="getImg(items[0].imgUrl)"></img>
 				<text>{{items[0].serviceName}}</text>
 			</view>
-			<view class="item" v-for="item in 9" @click="goActivity" :data-tab="items[item].link">
-				<img :src="getImg(items[item].imgUrl)" ></image>
+			<view class="item" v-for="item in 8" @click="goActivity" :data-tab="items[item].link">
+				<img :src="getImg(items[item].imgUrl)" ></img>
 				<text>{{items[item].serviceName}}</text>
 			</view>
+			<navigator open-type="switchTab" url="../allserver/allserver" class="item" hover-class="none">
+				<text>...</text>
+				<text>全部服务</text>
+			</navigator>  
 		</view>
 		<!-- 热门主题 -->
 		<h2 class="hot-topics-title">热门主题</h2>
@@ -119,7 +123,7 @@
 		},
 		methods: {
 			// 搜索页
-			searchNews: function() {
+			searchService: function() {
 				console.log(this.search)
 			},
 			// 跳转轮播图页面
@@ -131,7 +135,7 @@
 				uni.navigateTo({
 					url:"../" + e.target.dataset.tab
 				})
-			},
+			}
 		},
 	}
 </script>
@@ -153,7 +157,7 @@
 		padding: 0 .5em 0 2em;
 		box-sizing: border-box;
 		border-radius: 1em;
-		background-color: #0984e3;
+		background-color: #e7e8e8;
 	}
 
 	/* 轮播图 */

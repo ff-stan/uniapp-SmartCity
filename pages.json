@@ -77,6 +77,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/allserver/allserver",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部服务",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -106,7 +115,7 @@
 			"selectedIconPath": "./static/tabbar/首页_sel.png",
 			"text": "主页"
 		}, {
-			"pagePath": "pages/index/index",
+			"pagePath": "pages/allserver/allserver",
 			"iconPath": "./static/tabbar/分类.png",
 			"selectedIconPath": "./static/tabbar/分类_sel.png",
 			"text": "全部服务"

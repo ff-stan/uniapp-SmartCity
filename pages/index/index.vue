@@ -16,10 +16,14 @@
 			</swiper>
 		</view>
 		<!-- 应用服务入口 -->
-		<view class="items-box">
-			<view class="item" v-for="item in items" @click="goActivity">
-				<img :src="item.itemSrc"></image>
-				<text>{{item.itemName}}</text>
+		<view class="items-box" v-if="items.length > 1">
+			<view class="item" @click="goActivity" :data-tab="items[0].link">
+				<img :src="getImg(items[0].imgUrl)"></image>
+				<text>{{items[0].serviceName}}</text>
+			</view>
+			<view class="item" v-for="item in 9" @click="goActivity" :data-tab="items[item].link">
+				<img :src="getImg(items[item].imgUrl)" ></image>
+				<text>{{items[item].serviceName}}</text>
 			</view>
 		</view>
 		<!-- 热门主题 -->
@@ -72,47 +76,7 @@
 			return {
 				search: "",
 				swiperRows: [],
-				items: [{
-						itemName: "菜单管理",
-						itemSrc: "./static/菜单管理.png"
-					},
-					{
-						itemName: "操作日志",
-						itemSrc: "./static/操作日志.png"
-					},
-					{
-						itemName: "检验计划",
-						itemSrc: "./static/检验计划.png"
-					},
-					{
-						itemName: "检验任务",
-						itemSrc: "./static/检验任务.png"
-					},
-					{
-						itemName: "角色管理",
-						itemSrc: "./static/角色管理.png"
-					},
-					{
-						itemName: "配置管理",
-						itemSrc: "./static/配置管理.png"
-					},
-					{
-						itemName: "权限管理",
-						itemSrc: "./static/权限管理.png"
-					},
-					{
-						itemName: "用户管理",
-						itemSrc: "./static/用户管理.png"
-					},
-					{
-						itemName: "资源管理",
-						itemSrc: "./static/资源管理.png"
-					},
-					{
-						itemName: "组织管理",
-						itemSrc: "./static/组织管理.png"
-					}
-				],
+				items: [],
 				news: [],
 				newsList: [],
 				getImg: http.getImg
@@ -126,7 +90,14 @@
 			}).then(function(res) {
 				that.swiperRows = res.data.rows
 			})
-
+			
+			// 获取全部服务内容
+			http.http({
+				url: "/prod-api/api/service/list"
+			}).then((res) => {
+				that.items = res.data.rows
+			})
+			
 			// 获取新闻类型
 			http.http({
 				url: "/prod-api/press/category/list"
@@ -153,11 +124,13 @@
 			},
 			// 跳转轮播图页面
 			goTab: function(e) {
-				console.log(e)
+				
 			},
 			// 跳转对应的服务页面
 			goActivity: function(e) {
-				console.log(e)
+				uni.navigateTo({
+					url:"../" + e.target.dataset.tab
+				})
 			},
 		},
 	}
@@ -168,7 +141,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		/* background-color: #74b9ff; */
 	}
 
 	/* 搜索框 */
@@ -200,8 +172,11 @@
 		align-content: space-between;
 		width: 100%;
 		height: 110px;
+		margin-top: 1em;
 		padding: .5em 0;
-		background-color: #6c5ce7;
+		border: 1px solid #6c5ce7;
+		border-radius: 10px;
+		background-color: #55aaff;
 	}
 
 	.items-box>.item {

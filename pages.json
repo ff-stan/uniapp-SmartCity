@@ -59,6 +59,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/metro_query/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "城市地铁",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/subwaydetails/subwaydetails",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

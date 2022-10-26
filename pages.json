@@ -104,6 +104,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/newdetails/newdetails",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

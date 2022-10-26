@@ -21,8 +21,8 @@
 				</view>
 			</scroll-view>
 			<!-- 新闻列表 -->
-			<view v-for="list in newsList" v-show="acitveType[list.id]">
-				<view class="new-item" v-for="n in list">
+			<view v-for="list in newsList" v-show="acitveType[list.id]" >
+				<view class="new-item" v-for="n in list" @click="goDetail" :data-id="n.id">
 					<view class="new-item-img">
 						<img :src="getImg(n.cover)">
 					</view>
@@ -115,6 +115,11 @@
 						this.$set(this.acitveType, x, false)
 					}
 				}
+			},
+			goDetail(e){
+				uni.navigateTo({
+					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id
+				})
 			}
 		}
 	}

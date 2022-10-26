@@ -56,7 +56,7 @@
 					{{item.name}}
 				</view>
 				<!-- 新闻列表 -->
-				<view class="new-item" v-for="n in item">
+				<view class="new-item" v-for="n in item" @click="goDetail" :data-id="n.id">
 					<view class="new-item-img">
 						<img :src="getImg(n.cover)">
 					</view>
@@ -134,6 +134,12 @@
 			goActivity: function(e) {
 				uni.navigateTo({
 					url: "../" + e.target.dataset.tab
+				})
+			},
+			// 跳转到对应的新闻详情页
+			goDetail(e){
+				uni.navigateTo({
+					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id
 				})
 			}
 		},

@@ -1,0 +1,30 @@
+
+.line-name.data-v-1b7c48fc {
+	width: 3em;
+	margin: 0 auto;
+	text-align: center;
+	background-color: deepskyblue;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.line-item.data-v-1b7c48fc {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin: 1em 5%;
+	padding-bottom: 1em;
+	text-align: center;
+	border-bottom: 1px dashed black;
+}
+.line:last-child>.line-item.data-v-1b7c48fc {
+	border-bottom: none;
+}
+.line-item-route.data-v-1b7c48fc {
+	display: flex;
+	justify-content: space-between;
+}
+.line-item-reachTime.data-v-1b7c48fc {
+	font-size: .8em;
+	color: #5500ff;
+}
+

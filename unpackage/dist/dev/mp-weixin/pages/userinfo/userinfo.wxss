@@ -1,0 +1,15 @@
+
+.content.data-v-5cdc0ea6 {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin-left: 5%;
+}
+.details-items.data-v-5cdc0ea6 {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 50px;
+	margin-top: 1em;
+}
+

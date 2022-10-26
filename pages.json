@@ -86,6 +86,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/activity/activity",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/newlist/newlist",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新闻",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -120,12 +138,12 @@
 			"selectedIconPath": "./static/tabbar/分类_sel.png",
 			"text": "全部服务"
 		},{
-			"pagePath": "pages/index/index",
+			"pagePath": "pages/newlist/newlist",
 			"iconPath": "./static/tabbar/资讯.png",
 			"selectedIconPath": "./static/tabbar/资讯_sel.png",
 			"text":"新闻"
 		},{
-			"pagePath": "pages/index/index",
+			"pagePath": "pages/activity/activity",
 			"iconPath": "./static/tabbar/活动.png",
 			"selectedIconPath": "./static/tabbar/活动_sel.png",
 			"text": "活动"

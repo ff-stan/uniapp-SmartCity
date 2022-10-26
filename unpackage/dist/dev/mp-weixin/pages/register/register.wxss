@@ -1,0 +1,35 @@
+
+.content.data-v-891c2434 {
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+.title.data-v-891c2434 {
+	text-align: center;
+	margin-top: 1em;
+}
+.fromBox.data-v-891c2434 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+}
+.fromBox>input.data-v-891c2434,
+button.data-v-891c2434 {
+	flex: 1;
+	height: 50px;
+	margin: 2em 3em 0 3em;
+	padding-left: 2em;
+	background-color: #e7e8e8;
+	border-radius: 1em;
+}
+.fromBox>button.data-v-891c2434 {
+	text-align: center;
+	padding-left: 0;
+}
+.fromBox>radio-group.data-v-891c2434 {
+	flex: 1;
+	height: 30px;
+	margin: 2em 0 0 3em;
+}
+

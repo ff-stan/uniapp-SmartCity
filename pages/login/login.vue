@@ -82,7 +82,7 @@
 		height: 50px;
 		margin: 2em 3em 0 3em;
 		padding-left: 2em;
-		background-color: #aaffff;
+		background-color: #e7e8e8;
 		border-radius: 1em;
 	}
 

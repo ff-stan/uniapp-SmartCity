@@ -22,13 +22,13 @@
 				<text>{{items[0].serviceName}}</text>
 			</view>
 			<view class="item" v-for="item in 8" @click="goActivity" :data-tab="items[item].link">
-				<img :src="getImg(items[item].imgUrl)" ></img>
+				<img :src="getImg(items[item].imgUrl)"></img>
 				<text>{{items[item].serviceName}}</text>
 			</view>
 			<navigator open-type="switchTab" url="../allserver/allserver" class="item" hover-class="none">
 				<text>...</text>
 				<text>全部服务</text>
-			</navigator>  
+			</navigator>
 		</view>
 		<!-- 热门主题 -->
 		<h2 class="hot-topics-title">热门主题</h2>
@@ -94,14 +94,14 @@
 			}).then(function(res) {
 				that.swiperRows = res.data.rows
 			})
-			
+
 			// 获取全部服务内容
 			http.http({
 				url: "/prod-api/api/service/list"
 			}).then((res) => {
 				that.items = res.data.rows
 			})
-			
+
 			// 获取新闻类型
 			http.http({
 				url: "/prod-api/press/category/list"
@@ -128,12 +128,12 @@
 			},
 			// 跳转轮播图页面
 			goTab: function(e) {
-				
+
 			},
 			// 跳转对应的服务页面
 			goActivity: function(e) {
 				uni.navigateTo({
-					url:"../" + e.target.dataset.tab
+					url: "../" + e.target.dataset.tab
 				})
 			}
 		},
@@ -176,11 +176,11 @@
 		align-content: space-between;
 		width: 100%;
 		height: 110px;
-		margin-top: 1em;
+		/* margin-top: 1em; */
 		padding: .5em 0;
-		border: 1px solid #6c5ce7;
+		/* border: 1px solid #6c5ce7; */
 		border-radius: 10px;
-		background-color: #55aaff;
+		/* background-color: #55aaff; */
 	}
 
 	.items-box>.item {
@@ -220,10 +220,15 @@
 		text-align: center;
 	}
 
+
 	.hot-topics-icon {
 		flex: 1;
-		background-color: #6c5ce7;
+		background-color: black;
 		border-radius: 30px;
+	}
+
+	.hot-topics-item:first-child>.hot-topics-icon {
+		background-color: antiquewhite;
 	}
 
 	/* 新闻列表 */

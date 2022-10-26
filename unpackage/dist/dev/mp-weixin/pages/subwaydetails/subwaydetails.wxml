@@ -1,0 +1,1 @@
+<view>{{''+route.name+"\n\t"+route.first+" -- "+route.end+"\n\t"+route.startTime+" -- "+route.endTime+"\n\t站点数:"+route.stationsNumber+"\n\t总路程:"+route.km+'km'}}<block wx:for="{{route.metroStepList}}" wx:for-item="station" wx:for-index="__i0__"><view>{{''+station.name+''}}</view></block>{{'车辆运行站:'+route.runStationsName+"\n\t剩余时间:"+route.remainingTime+'分钟'}}</view>

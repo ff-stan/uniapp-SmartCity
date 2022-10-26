@@ -1,7 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/register/register",
+    "pages/userdetails/userdetails",
+    "pages/userinfo/userinfo",
+    "pages/changepassword/changepassword",
+    "pages/feedback/feedback",
+    "pages/metro_query/index",
+    "pages/subwaydetails/subwaydetails",
+    "pages/allserver/allserver",
+    "pages/activity/activity",
+    "pages/newlist/newlist"
   ],
   "subPackages": [],
   "window": {
@@ -9,6 +19,44 @@
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#aa0000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./static/tabbar/首页.png",
+        "selectedIconPath": "./static/tabbar/首页_sel.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/allserver/allserver",
+        "iconPath": "./static/tabbar/分类.png",
+        "selectedIconPath": "./static/tabbar/分类_sel.png",
+        "text": "全部服务"
+      },
+      {
+        "pagePath": "pages/newlist/newlist",
+        "iconPath": "./static/tabbar/资讯.png",
+        "selectedIconPath": "./static/tabbar/资讯_sel.png",
+        "text": "新闻"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "iconPath": "./static/tabbar/活动.png",
+        "selectedIconPath": "./static/tabbar/活动_sel.png",
+        "text": "活动"
+      },
+      {
+        "pagePath": "pages/userdetails/userdetails",
+        "iconPath": "./static/tabbar/我的.png",
+        "selectedIconPath": "./static/tabbar/我的_sel.png",
+        "text": "个人中心"
+      }
+    ]
   },
   "usingComponents": {}
 }

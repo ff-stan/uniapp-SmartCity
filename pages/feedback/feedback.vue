@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<input type="text" v-model="title" placeholder="反馈标题">
-		<textarea cols="30" rows="10" v-model="content" placeholder="反馈内容"></textarea>
+		<textarea cols="30" rows="10" v-model="content" placeholder="反馈内容" maxlength="150"></textarea>
 		<button @click="subFeedback">提交反馈</button>
 	</view>
 </template>

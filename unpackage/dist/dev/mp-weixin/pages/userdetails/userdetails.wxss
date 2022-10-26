@@ -1,0 +1,139 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 顶部缩略信息 */
+.user.data-v-5b07fc36 {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 100px;
+}
+.user-img.data-v-5b07fc36 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40%;
+	margin: 0 1em;
+}
+.user-img>._img.data-v-5b07fc36 {
+	width: 80px;
+	height: 80px;
+	border: 1px solid black;
+	border-radius: 100%;
+	overflow: hidden;
+}
+.user-text.data-v-5b07fc36 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 60%;
+}
+.user-text>._p.data-v-5b07fc36 {
+	font-size: .8em;
+	color: darkgray;
+}
+/* 跳转模块 */
+.detail-jump.data-v-5b07fc36 {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	height: 300px;
+	margin-left: 10%;
+}
+.detail-jump-item.data-v-5b07fc36 {
+	flex: 1;
+	margin-top: 1em;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: bisque;
+}
+.detail-jump-item>navigator.data-v-5b07fc36,
+._p.data-v-5b07fc36 {
+	margin-top: .5em;
+}
+.detail-jump-selitem.data-v-5b07fc36 {
+	background-color: chocolate;
+}
+.detail-jump-selitem.data-v-5b07fc36:last-child {
+	background-color: crimson;
+}
+

@@ -1,0 +1,15 @@
+
+.content.data-v-91bba7b4 {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin-left: 5%;
+}
+.content>textarea.data-v-91bba7b4 {
+	height: 300px;
+}
+.content>button.data-v-91bba7b4 {
+	background-color: cornflowerblue;
+	border-radius: 10px;
+}
+

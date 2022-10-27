@@ -88,7 +88,7 @@
 					that.topNews = res.data.rows
 				})
 			})
-			
+
 		},
 		updated() {
 			// 数据更新后自动刷新评论区
@@ -103,51 +103,78 @@
 		},
 		methods: {
 			// 跳转到对应的详情页
-			goDetail(e){
+			goDetail(e) {
 				uni.navigateTo({
-					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id
+					url: "../newdetails/newdetails?newsId=" + e.currentTarget.dataset.id
 				})
 			},
 			// 发表评论
 			setComment() {
-				if (this.comment != "") {
-					http.http({
-						url: "/prod-api/press/pressComment",
-						method: "post",
-						data: {
-							newsId: this.news.id,
-							content: this.comment
+				// 判断是否登录
+				if (!uni.getStorageSync('token')) {
+					uni.showToast({
+						icon: "error",
+						title: "请先登录!",
+						success() {
+							uni.navigateTo({
+								url: "../login/login"
+							})
 						}
+					})
+				} else {
+					if (this.comment != "") {
+						http.http({
+							url: "/prod-api/press/pressComment",
+							method: "post",
+							data: {
+								newsId: this.news.id,
+								content: this.comment
+							}
+						}).then((res) => {
+							if (res.data.code == 200) {
+								uni.showToast({
+									icon: "success",
+									title: "发表成功"
+								})
+								this.comment = ""
+							}
+						})
+					} else {
+						uni.showToast({
+							icon: "error",
+							title: "请输入内容"
+						})
+					}
+				}
+
+			},
+			// 提交点赞
+			setLike() {
+				// 判断是否登录
+				if (!uni.getStorageSync('token')) {
+					uni.showToast({
+						icon: "error",
+						title: "请先登录!",
+						success() {
+							uni.navigateTo({
+								url: "../login/login"
+							})
+						}
+					})
+				} else {
+					http.http({
+						url: "/prod-api/press/press/like/" + this.news.id,
+						method: "put"
 					}).then((res) => {
 						if (res.data.code == 200) {
 							uni.showToast({
 								icon: "success",
-								title: "发表成功"
+								title: "点赞成功"
 							})
 							this.comment = ""
 						}
 					})
-				} else {
-					uni.showToast({
-						icon: "error",
-						title: "请输入内容"
-					})
 				}
-			},
-			// 提交点赞
-			setLike() {
-				http.http({
-					url: "/prod-api/press/press/like/" + this.news.id,
-					method: "put"
-				}).then((res) => {
-					if (res.data.code == 200) {
-						uni.showToast({
-							icon: "success",
-							title: "点赞成功"
-						})
-						this.comment = ""
-					}
-				})
 			}
 		}
 	}
@@ -174,10 +201,10 @@
 		text-align: right;
 		color: darkgray;
 	}
+
 	/* 评论区 */
-	.comment-content {
-		
-	}
+	.comment-content {}
+
 	.comment-item {
 		display: flex;
 		flex-direction: column;
@@ -185,44 +212,49 @@
 		border-radius: 10px;
 		margin-bottom: .5em;
 	}
-	.comment-item-title{
+
+	.comment-item-title {
 		margin-bottom: .3em;
 	}
+
 	.comment-item-content {
 		font-size: .8em;
 		text-indent: 2em;
 	}
+
 	.comment-item-time {
 		font-size: .8em;
 		text-align: right;
 	}
+
 	/* 新闻推荐 */
 	.new-item {
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 3em;
 	}
-	
+
 	.new-item-img {
 		width: 50%;
 		overflow: hidden;
 	}
-	
+
 	.new-item-img>img {
 		width: 100%;
 		height: 100%;
 		object-fit: fill;
 	}
-	
+
 	.new-item-text {
 		width: 45%;
 	}
-	
+
 	.new-item-text>p {
 		font-size: .5em;
 		text-align: right;
 		color: #644b4c;
 	}
+
 	/* 评论框 */
 	.comment {
 		display: flex;
@@ -239,13 +271,14 @@
 		background-color: #e7e8e8;
 		border-radius: 5px;
 	}
+
 	.comment-btn {
 		flex: 20%;
 	}
+
 	.comment>button {
 		border: 5px;
 	}
-
 </style>
 <style>
 	.news-content>p {

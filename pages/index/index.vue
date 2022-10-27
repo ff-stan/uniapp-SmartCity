@@ -87,6 +87,7 @@
 			}
 		},
 		created() {
+			console.log("测试BASH_URL:" + uni.getStorageSync("BASE_URL"))
 			// 获取轮播图数据
 			const that = this
 			http.http({

@@ -10,7 +10,7 @@
 				<p>{{detail.email}}</p>
 			</view>
 		</view>
-		<!-- 跳转模块 -->
+		<!-- 功能模块 -->
 		<view class="detail-jump">
 			<view class="detail-jump-item" hover-class="detail-jump-selitem">
 				<navigator url="../userinfo/userinfo" hover-class="none">用户信息</navigator>

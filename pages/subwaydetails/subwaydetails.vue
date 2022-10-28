@@ -23,6 +23,7 @@
 		},
 		onShow() {
 			const that = this
+			// 请求对应的线路详细数据
 			uni.request({
 				url: 'http://124.93.196.45:10001/prod-api/api/metro/line/' + getApp().globalData.nowSubwayRoute,
 				success(res) {

@@ -23,7 +23,7 @@
 
 		},
 		methods: {
-			// 登录 请求登录api
+			// 调用接口 登录
 			login() {
 				uni.request({
 					url: "http://124.93.196.45:10001/prod-api/api/login",

@@ -16,6 +16,7 @@
 			}
 		},
 		methods: {
+			// 调用接口 提交反馈
 			subFeedback() {
 				http.http({
 					url: "/prod-api/api/common/feedback",

@@ -59,6 +59,7 @@
 			}
 		},
 		onLoad(option) {
+			// 接收上一个页面的传参
 			this.id = option.newsId
 		},
 		created() {

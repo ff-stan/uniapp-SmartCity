@@ -3956,11 +3956,6 @@ var render = function() {
                   attrs: {
                     "data-newsId": _vm._$g("3-" + $30, "a-data-newsId"),
                     _i: "3-" + $30
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event)
-                    }
                   }
                 },
                 [
@@ -3975,7 +3970,13 @@ var render = function() {
                         attrs: {
                           mode: "widthFix",
                           src: _vm._$g("5-" + $30, "a-src"),
+                          "data-id": _vm._$g("5-" + $30, "a-data-id"),
                           _i: "5-" + $30
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
                         }
                       })
                     ],

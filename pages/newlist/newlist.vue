@@ -3,9 +3,9 @@
 		<!-- 轮播图 -->
 		<view class="swiper-view">
 			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
-				<swiper-item v-for="item in swiperRows" :data-newsId="item.targetId" @tap="goTab">
+				<swiper-item v-for="item in swiperRows" :data-newsId="item.targetId" >
 					<view class="swiper-item">
-						<image mode="widthFix" :src="getImg(item.advImg)"></image>
+						<image mode="widthFix" :src="getImg(item.advImg)" @click="goDetail" :data-id="item.id"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -102,11 +102,8 @@
 
 		},
 		methods: {
-			goTab(e) {
-				console.log(e)
-			},
+			// 切换新闻类别
 			getNews(e) {
-				// 切换新闻类别
 				const num = String(e.mp.currentTarget.dataset.id)
 				for (let x in this.acitveType) {
 					if (x == num) {
@@ -116,6 +113,7 @@
 					}
 				}
 			},
+			// 跳转到对应的新闻详情页
 			goDetail(e){
 				uni.navigateTo({
 					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id

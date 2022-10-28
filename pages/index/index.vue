@@ -126,12 +126,12 @@
 		methods: {
 			// 搜索页
 			searchService: function() {
-				if(this.search != " "){
+				if (this.search != " ") {
 					uni.navigateTo({
-						url:"../searchnews/searchnews?newsTitle=" + this.search
+						url: "../searchnews/searchnews?newsTitle=" + this.search
 					})
 				}
-			},	
+			},
 			// 跳转对应的服务页面
 			goActivity: function(e) {
 				uni.navigateTo({
@@ -139,9 +139,9 @@
 				})
 			},
 			//跳转轮播图页面 与 跳转到对应的新闻详情页 
-			goDetail(e){
+			goDetail(e) {
 				uni.navigateTo({
-					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id
+					url: "../newdetails/newdetails?newsId=" + e.currentTarget.dataset.id
 				})
 			}
 		},

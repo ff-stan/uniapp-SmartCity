@@ -17,6 +17,7 @@
 			}
 		},
 		methods: {
+			// 调用接口 修改密码
 			change() {
 				if (this.password != "" && this.newpassword != "") {
 					http.http({

@@ -5,6 +5,7 @@
 			<swiper-item v-for="x in 4">
 				<view class="swiper-item" :style="{height:swiperheight}">{{x}}</view>
 			</swiper-item>
+			<!-- 最后一个引导页 -->
 			<swiper-item>
 				<view class="swiper-item last" :style="{height:swiperheight}">
 					<!-- 模态框 -->
@@ -59,14 +60,17 @@
 			uni.setStorageSync("BASE_URL",this.url + ":" + this.port)
 		},
 		methods: {
+			// 跳转到主页
 			goIndex() {
 				uni.switchTab({
 					url:"../index/index"
 				})
 			},
+			// 显示模态框
 			changeNet() {
 				this.modelShow = true
 			},
+			// 同步修改缓存中的BASE_URL
 			subNet() {
 				this.modelShow = false
 				if(this.url != "" && this.port != ""){

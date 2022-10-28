@@ -1,3 +1,4 @@
+<!-- 这个页面为什么也叫index? 那是因为该服务最开始请求返回的数据中指定了该路径为 /metro_query/index -->
 <template>
 	<view>
 		<view class="line" v-for="item in lines">
@@ -41,6 +42,7 @@
 				lines: []
 			}
 		},
+		// 每一次打开页面 都用定位去请求一次数据
 		onShow() {
 			const that = this
 			http.http({
@@ -60,9 +62,11 @@
 
 		},
 		methods: {
+			// 简单判断时间
 			getTime(time) {
 				return time == 0 ? "列车即将进站" : `列车到站时间还有 ${time} 分钟`
 			},
+			// 跳转到对应地铁线路详细页
 			getDetails(e) {
 				getApp().globalData.nowSubwayRoute = e.target.dataset.routeId
 				uni.navigateTo({

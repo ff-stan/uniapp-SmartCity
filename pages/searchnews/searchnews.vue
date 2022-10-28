@@ -30,6 +30,7 @@
 			}
 		},
 		onLoad(option) {
+			// 接收传参
 			this.newsTitle = option.newsTitle
 		},
 		created() {
@@ -45,6 +46,7 @@
 			})
 		},
 		methods: {
+			// 跳转到对应的新闻详情页
 			goDetail(e) {
 				uni.navigateTo({
 					url: "../newdetails/newdetails?newsId=" + e.currentTarget.dataset.id

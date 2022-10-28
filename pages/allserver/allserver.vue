@@ -31,10 +31,12 @@
 		},
 		created() {
 			const that = this
+			// 获取到所有服务的数据
 			uni.request({
 				url: "http://124.93.196.45:10001/prod-api/api/service/list",
 				success(res) {
 					const old = {}
+					// 将相同类型的服务数据清洗到一起
 					res.data.rows.forEach((x) => {
 						if (!Array.isArray(old[x.serviceType])) {
 							old[x.serviceType] = []

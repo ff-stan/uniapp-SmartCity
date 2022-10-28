@@ -1,4 +1,5 @@
 const BASE_URL = uni.getStorageSync("BASE_URL") || 'http://124.93.196.45:10001' //接口地址
+// 导出封装好的 http方法
 export const http = (options) => {
 	return new Promise((resolve, reject) => {
 		uni.request({

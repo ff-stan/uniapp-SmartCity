@@ -18,11 +18,11 @@ export const http = (options) => {
 				resolve(res)
 			},
 			fail: (err) => {
+				reject(err)
 				return uni.showToast({
 					icon: 'loading',
 					title: "请求失败"
 				})
-				reject(err)
 			}
 		})
 	})

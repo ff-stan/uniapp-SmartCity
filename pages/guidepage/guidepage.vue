@@ -56,7 +56,7 @@
 				}
 			})
 			// 先初始化一下默认地址 防止后续没修改导致其他位置使用不了
-			uni.setStorageSync("BASH_URL",`${this.url}:${this.port}`)
+			uni.setStorageSync("BASE_URL",this.url + ":" + this.port)
 		},
 		methods: {
 			goIndex() {
@@ -70,7 +70,7 @@
 			subNet() {
 				this.modelShow = false
 				if(this.url != "" && this.port != ""){
-					uni.setStorageSync("BASH_URL",this.url + ":" + this.port)
+					uni.setStorageSync("BASE_URL",this.url + ":" + this.port)
 					uni.showToast({
 						icon:'success',
 						title:"修改成功!"
@@ -120,7 +120,7 @@
 		width: 60%;
 		height: 50%;
 		left: 20%;
-		top: 25%;
+		top: 23%;
 		background-color: #95a5a6;
 	}
 	.model-content{

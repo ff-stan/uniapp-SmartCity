@@ -10,7 +10,8 @@
 			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
 				<swiper-item v-for="item in swiperRows">
 					<view class="swiper-item">
-						<image mode="widthFix" :src="getImg(item.advImg)" @click="goTab"></image>
+						<!-- 轮播图接口返回的新闻id与图片不符 -->
+						<image mode="widthFix" :src="getImg(item.advImg)" @click="goDetail" :data-id="item.id"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -56,7 +57,7 @@
 					{{item.name}}
 				</view>
 				<!-- 新闻列表 -->
-				<view class="new-item" v-for="n in item" @click="goDetail" :data-id="n.id">
+				<view class="new-item" v-for="n in item" @clic3k="goDetail" :data-id="n.id">
 					<view class="new-item-img">
 						<img :src="getImg(n.cover)">
 					</view>
@@ -87,7 +88,7 @@
 			}
 		},
 		created() {
-			console.log("测试BASH_URL:" + uni.getStorageSync("BASE_URL"))
+			console.log("测试BASE_URL:" + uni.getStorageSync("BASE_URL"))
 			// 获取轮播图数据
 			const that = this
 			http.http({
@@ -125,19 +126,19 @@
 		methods: {
 			// 搜索页
 			searchService: function() {
-				console.log(this.search)
-			},
-			// 跳转轮播图页面
-			goTab: function(e) {
-
-			},
+				if(this.search != " "){
+					uni.navigateTo({
+						url:"../searchnews/searchnews?newsTitle=" + this.search
+					})
+				}
+			},	
 			// 跳转对应的服务页面
 			goActivity: function(e) {
 				uni.navigateTo({
 					url: "../" + e.target.dataset.tab
 				})
 			},
-			// 跳转到对应的新闻详情页
+			//跳转轮播图页面 与 跳转到对应的新闻详情页 
 			goDetail(e){
 				uni.navigateTo({
 					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id

@@ -3,7 +3,7 @@
 		<!-- 轮播图 -->
 		<view class="swiper-view">
 			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
-				<swiper-item v-for="item in swiperRows" :data-newsId="item.targetId" >
+				<swiper-item v-for="item in swiperRows">
 					<view class="swiper-item">
 						<image mode="widthFix" :src="getImg(item.advImg)" @click="goDetail" :data-id="item.id"></image>
 					</view>
@@ -167,7 +167,7 @@
 	.active {
 		background-color: coral;
 	}
-
+	/* 新闻列表 */
 	.new-item {
 		display: flex;
 		justify-content: space-between;

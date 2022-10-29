@@ -20,6 +20,7 @@ export const http = (options) => {
 			},
 			fail: (err) => {
 				reject(err)
+				console.log(err)
 				return uni.showToast({
 					icon: 'loading',
 					title: "请求失败"

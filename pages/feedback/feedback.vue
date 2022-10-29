@@ -18,33 +18,37 @@
 		methods: {
 			// 调用接口 提交反馈
 			subFeedback() {
-				http.http({
-					url: "/prod-api/api/common/feedback",
-					method: "post",
-					data: {
-						title: this.title,
-						content: this.content
-					}
-				}).then((res) => {
-					if (res.data.code !== 200) {
-						uni.showToast({
-							icon: "error",
-							title: "反馈失败",
-							duration: 1000
-						})
-					} else {
-						uni.showToast({
-							icon: "success",
-							title: "反馈成功",
-							duration: 1000,
-							success() {
-								setTimeout(() => {
-									uni.navigateBack(1)
-								}, 1100)
-							}
-						})
-					}
-				})
+				// 判断是否登录
+				if (isLogin.isLogin()) {
+					http.http({
+						url: "/prod-api/api/common/feedback",
+						method: "post",
+						data: {
+							title: this.title,
+							content: this.content
+						}
+					}).then((res) => {
+						if (res.data.code !== 200) {
+							uni.showToast({
+								icon: "error",
+								title: "反馈失败",
+								duration: 1000
+							})
+						} else {
+							uni.showToast({
+								icon: "success",
+								title: "反馈成功",
+								duration: 1000,
+								success() {
+									setTimeout(() => {
+										uni.navigateBack(1)
+									}, 1100)
+								}
+							})
+						}
+					})
+				}
+
 			}
 		}
 	}

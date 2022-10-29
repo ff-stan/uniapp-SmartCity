@@ -135,7 +135,10 @@
 			// 跳转对应的服务页面
 			goActivity: function(e) {
 				uni.navigateTo({
-					url: "../" + e.target.dataset.tab
+					url: "../" + e.target.dataset.tab,
+					fail(e) {
+						console.log(e)
+					}
 				})
 			},
 			//跳转轮播图页面 与 跳转到对应的新闻详情页 

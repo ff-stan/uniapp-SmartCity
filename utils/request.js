@@ -7,7 +7,7 @@ export const http = (options) => {
 			method: options.method || 'GET',
 			data: options.data || {},
 			header: {
-				Authorization: uni.getStorageSync('token')
+				Authorization: uni.getStorageSync('token') 
 			},
 			success: (res) => {
 				if (res == "") {

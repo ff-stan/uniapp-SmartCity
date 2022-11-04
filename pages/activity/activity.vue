@@ -1,16 +1,9 @@
 <template>
 	<view class="content">
-		<!-- 轮播图 -->
-		<view class="swiper-view">
-			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
-				<swiper-item v-for="item in swiperRows" :data-newsId="item.targetId">
-					<view class="swiper-item">
-						<image mode="widthFix" :src="getImg(item.advImg)" @click="goDetail" :data-id="item.targetId">
-						</image>
-					</view>
-				</swiper-item>
-			</swiper>
-		</view>
+		<!-- 轮播图组件 -->
+		<Swipers v-bind:swiperRows="swiperrows" detail="../activitydetails/activitydetails?activityId=">
+
+		</Swipers>
 		<view class="activity-list">
 			<scroll-view scroll-x="true" class="activity-type">
 				<view class="types">
@@ -40,15 +33,19 @@
 
 <script>
 	import * as http from "../../utils/request.js"
+	import Swipers from "../../components/Swipers.vue"
 	export default {
 		data() {
 			return {
-				swiperRows: [],
+				swiperrows: [],
 				activityType: [],
 				activityList: [],
 				acitveType: [],
 				getImg: http.getImg
 			}
+		},
+		components: {
+			'Swipers': Swipers
 		},
 		created() {
 			const that = this
@@ -56,7 +53,7 @@
 			http.http({
 				url: "/prod-api/api/activity/rotation/list"
 			}).then((res) => {
-				that.swiperRows = res.data.rows
+				that.swiperrows = res.data.rows
 			})
 			// 获取活动类型
 			http.http({
@@ -115,15 +112,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-	}
-
-	/* 轮播图 */
-	.swiper {
-		text-align: center;
-	}
-
-	.swiper-item>image {
-		width: 100%;
 	}
 
 	/* 活动列表 */

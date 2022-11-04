@@ -1,15 +1,9 @@
 <template>
 	<view class="content">
-		<!-- 轮播图 -->
-		<view class="swiper-view">
-			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
-				<swiper-item v-for="item in swiperRows">
-					<view class="swiper-item">
-						<image mode="widthFix" :src="getImg(item.advImg)" @click="goDetail" :data-id="item.id"></image>
-					</view>
-				</swiper-item>
-			</swiper>
-		</view>
+		<!-- 轮播图组件 -->
+		<Swipers v-bind:swiperRows="swiperrows" detail="../newdetails/newdetails?newsId=">
+
+		</Swipers>
 		<!-- 新闻列表 -->
 		<view class="newsList">
 			<scroll-view scroll-x="true" class="newsType">
@@ -21,7 +15,7 @@
 				</view>
 			</scroll-view>
 			<!-- 新闻列表 -->
-			<view v-for="list in newsList" v-show="acitveType[list.id]" >
+			<view v-for="list in newsList" v-show="acitveType[list.id]">
 				<view class="new-item" v-for="n in list" @click="goDetail" :data-id="n.id">
 					<view class="new-item-img">
 						<img :src="getImg(n.cover)">
@@ -41,15 +35,19 @@
 
 <script>
 	import * as http from "../../utils/request.js"
+	import Swipers from "../../components/Swipers.vue"
 	export default {
 		data() {
 			return {
-				swiperRows: [],
+				swiperrows: [],
 				newsType: [],
 				newsList: [],
 				acitveType: [],
 				getImg: http.getImg
 			}
+		},
+		components: {
+			"Swipers": Swipers
 		},
 		created() {
 			// 获取轮播图数据
@@ -57,7 +55,7 @@
 			http.http({
 				url: "/prod-api/api/rotation/list?pageNum=1&pageSize=8&type=2",
 			}).then(function(res) {
-				that.swiperRows = res.data.rows
+				that.swiperrows = res.data.rows
 			})
 
 			// 获取新闻类型
@@ -114,9 +112,9 @@
 				}
 			},
 			// 跳转到对应的新闻详情页
-			goDetail(e){
+			goDetail(e) {
 				uni.navigateTo({
-					url:"../newdetails/newdetails?newsId="+e.currentTarget.dataset.id
+					url: "../newdetails/newdetails?newsId=" + e.currentTarget.dataset.id
 				})
 			}
 		}
@@ -130,14 +128,6 @@
 		justify-content: center;
 	}
 
-	/* 轮播图 */
-	.swiper {
-		text-align: center;
-	}
-
-	.swiper-item>image {
-		width: 100%;
-	}
 
 	/* 新闻列表 */
 	.newsList {
@@ -167,6 +157,7 @@
 	.active {
 		background-color: coral;
 	}
+
 	/* 新闻列表 */
 	.new-item {
 		display: flex;

@@ -5,17 +5,10 @@
 			<input type="text" confirm-type="search" v-model="search" placeholder="搜索">
 			<icon type="search" @click="searchService" class="search-icon"></icon>
 		</view>
-		<!-- 轮播图 -->
-		<view class="swiper-view">
-			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="800">
-				<swiper-item v-for="item in swiperRows">
-					<view class="swiper-item">
-						<!-- 轮播图接口返回的新闻id与图片不符 -->
-						<image mode="widthFix" :src="getImg(item.advImg)" @click="goDetail" :data-id="item.id"></image>
-					</view>
-				</swiper-item>
-			</swiper>
-		</view>
+		<!-- 轮播图组件 -->
+		<Swipers v-bind:swiperRows="swiperrows" detail="../newdetails/newdetails?newsId=">
+			
+		</Swipers>
 		<!-- 应用服务入口 -->
 		<view class="items-box" v-if="items.length > 1">
 			<view class="item" @click="goActivity" :data-tab="items[0].link">
@@ -57,7 +50,7 @@
 					{{item.name}}
 				</view>
 				<!-- 新闻列表 -->
-				<view class="new-item" v-for="n in item" @clic3k="goDetail" :data-id="n.id">
+				<view class="new-item" v-for="n in item" @click="goDetail" :data-id="n.id">
 					<view class="new-item-img">
 						<img :src="getImg(n.cover)">
 					</view>
@@ -76,16 +69,20 @@
 
 <script>
 	import * as http from "../../utils/request.js"
+	import Swipers from "../../components/Swipers.vue"
 	export default {
 		data() {
 			return {
 				search: "",
-				swiperRows: [],
+				swiperrows: [],
 				items: [],
 				news: [],
 				newsList: [],
 				getImg: http.getImg
 			}
+		},
+		components: {
+			'Swipers': Swipers
 		},
 		created() {
 			console.log("测试BASE_URL:" + uni.getStorageSync("BASE_URL"))
@@ -94,7 +91,7 @@
 			http.http({
 				url: "/prod-api/api/rotation/list?pageNum=1&pageSize=8&type=2",
 			}).then(function(res) {
-				that.swiperRows = res.data.rows
+				that.swiperrows = res.data.rows
 			})
 
 			// 获取全部服务内容
@@ -170,16 +167,6 @@
 		border-radius: 1em;
 		background-color: #e7e8e8;
 	}
-
-	/* 轮播图 */
-	.swiper {
-		text-align: center;
-	}
-
-	.swiper-item>image {
-		width: 100%;
-	}
-
 	/* 应用服务入口 */
 	.items-box {
 		display: flex;
